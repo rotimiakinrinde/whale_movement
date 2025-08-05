@@ -1,0 +1,7 @@
+pathlib
+python-dotenv
+pandas
+matplotlib
+pyyaml
+requests
+numpy

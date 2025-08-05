@@ -1,0 +1,31 @@
+api:
+  coingecko:
+    base_url: "https://api.coingecko.com/api/v3"
+    api_key_env: "COINGECKO_API_KEY"
+
+  dune:
+    base_url: "https://api.dune.com/api/v1"
+    api_key_env: "DUNE_API_KEY"
+    query_id: "123456"  # Replace with actual Dune query ID
+
+token:
+  name: "solana"
+  vs_currency: "usd"
+  price_interval: "daily"
+
+analysis:
+  whale_threshold_usd: 100000
+  start_date: "2025-05-01"  # optional
+  end_date: "2025-08-01"    # optional
+
+paths:
+  raw_data: "data/raw"
+  processed_data: "data/processed"
+  results: "results"
+  figures: "results/figures"
+
+plot:
+  figsize: [12, 6]
+  price_color: "blue"
+  whale_color: "orange"
+

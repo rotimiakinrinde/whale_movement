@@ -1,2 +1,4 @@
 whalemv/
 *.env
+__pycache__/
+1b.ipynb
