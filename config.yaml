@@ -1,31 +1,35 @@
 api:
   coingecko:
-    base_url: "https://api.coingecko.com/api/v3"
-    api_key_env: "COINGECKO_API_KEY"
+    base_url: "https://pro-api.coingecko.com/api/v3"
+    api_key_env: "COINGECKO_API_KEY"  # Set in your .env file or environment
 
-  dune:
-    base_url: "https://api.dune.com/api/v1"
-    api_key_env: "DUNE_API_KEY"
-    query_id: "123456"  # Replace with actual Dune query ID
+  helius:
+    base_url: "https://api.helius.xyz/v0"  # Helius REST API base
+    rpc_url: "https://mainnet.helius-rpc.com/?api-key=${HELIUS_API_KEY}"  # Solana RPC
+    api_key_env: "HELIUS_API_KEY"         # Set in your .env file or environment
+    ttl_minutes: 15                       # Cache lifetime for whale data
 
 token:
-  name: "solana"
-  vs_currency: "usd"
-  price_interval: "daily"
+  name: "solana"               # CoinGecko ID (e.g., bitcoin, solana, tether)
+  symbol: "SOL"                # Display symbol for plots and filters
+  vs_currency: "usd"           # usd, eur, etc.
+  price_interval: "daily"      # daily | hourly (future support for hourly granularity)
 
 analysis:
-  whale_threshold_usd: 100000
-  start_date: "2025-05-01"  # optional
-  end_date: "2025-08-01"    # optional
+  whale_threshold_usd: 100000                    # Minimum tx value to classify as a whale transfer
+  correlation_method: "pearson"                  # pearson | spearman | kendall
+  start_date: "2025-06-01"                       # Must be in YYYY-MM-DD format
+  end_date: "2025-08-06"                         # Avoid future dates
+  top_addresses_file: "data/raw/top_addresses.csv"  # Optional override for whale addresses
 
 paths:
-  raw_data: "data/raw"
-  processed_data: "data/processed"
-  results: "results"
-  figures: "results/figures"
+  raw_data: "data/raw"                 # Raw responses from APIs
+  processed_data: "data/processed"     # Cleaned and prepared data
+  results: "results"                   # Analysis results
+  figures: "results/figures"           # Plots and visualizations
 
 plot:
-  figsize: [12, 6]
-  price_color: "blue"
-  whale_color: "orange"
-
+  figsize: [12, 6]                     # Inches [width, height]
+  price_color: "blue"                  # Token price line
+  whale_color: "orange"                # Whale volume bar
+  scatter_color: "green"               # For scatter overlays (if enabled)
